@@ -28,6 +28,7 @@ env:
     APP_VERSION: <%= `git rev-parse --short HEAD`.strip %>
     RACK_ENV: production
   secret:
+    - DATABASE_URL
     - DISCORD_APP_ID
     - DISCORD_PUBLIC_KEY
     - DISCORD_BOT_TOKEN
