@@ -22,6 +22,39 @@ request.body = JSON.generate(
       name: "ping",
       type: 1,
       description: "Check whether the bot is alive"
+    },
+    {
+      name: "points",
+      type: 1,
+      description: "Award or deduct points for a server member",
+      options: [
+        {
+          type: 6,
+          name: "user",
+          description: "Member to update",
+          required: true
+        },
+        {
+          type: 4,
+          name: "delta",
+          description: "Positive or negative points change",
+          required: true,
+          min_value: -1000,
+          max_value: 1000
+        },
+        {
+          type: 3,
+          name: "reason",
+          description: "Optional note for the change",
+          required: false,
+          max_length: 200
+        }
+      ]
+    },
+    {
+      name: "scoreboard",
+      type: 1,
+      description: "Show the current server leaderboard"
     }
   ]
 )
