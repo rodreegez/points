@@ -1,0 +1,36 @@
+# Name of your application. Used to uniquely configure containers.
+service: points
+
+# Name of the container image.
+image: ghcr.io/rodreegez/points
+
+# Deploy to these servers.
+servers:
+  web:
+    - oh-my-banoffee-pie.tail8a6133.ts.net
+
+proxy:
+  ssl: true
+  host: points.rodreegez.com
+  app_port: 9292
+
+registry:
+  server: ghcr.io
+  username: rodreegez
+  password:
+    - GHCR_TOKEN
+
+builder:
+  arch: amd64
+
+env:
+  clear:
+    APP_VERSION: <%= `git rev-parse --short HEAD`.strip %>
+    RACK_ENV: production
+  secret:
+    - DISCORD_APP_ID
+    - DISCORD_PUBLIC_KEY
+    - DISCORD_BOT_TOKEN
+
+ssh:
+  user: adam
