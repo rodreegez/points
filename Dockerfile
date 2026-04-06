@@ -9,7 +9,9 @@ COPY Gemfile ./
 RUN bundle install
 
 COPY config.ru ./
+COPY db ./db
 COPY lib ./lib
+COPY script ./script
 
 EXPOSE 9292
 
